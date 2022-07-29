@@ -1,0 +1,19 @@
+# requirements.txt for Deep Learning 
+# Note: Under update; I won't add versions, since using poetry package manager.
+
+# Essentials: 
+numpy
+pandas
+scipy
+
+# Data-Viz:
+matplotlib
+seaborn
+
+jupyter-notebook
+
+# ML & DL:
+scikit-learn
+imbalanced-learn
+tensorflow
+
