@@ -10,7 +10,7 @@ scipy
 matplotlib
 seaborn
 
-jupyter-notebook
+notebook
 
 # ML & DL:
 scikit-learn

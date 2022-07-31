@@ -1,15 +1,15 @@
 FROM python:latest
 
-RUN python -m pip install --upgrade pip
+# Changing working dir to setup
+WORKDIR ./setup
 
-# Installing Poetry:
-RUN curl -sSL https://install.python-poetry.org | python3 -
-# Setting Poetry Path:
 ENV PATH="/root/.local/bin:${PATH}"
 
-WORKDIR ./setup/
-RUN curl https://raw.githubusercontent.com/akmalsoliev/requirements.txt/master/DeepLearning/deeplearning.txt --output requirements.txt
-RUN poetry init 
-RUN poetry add $( cat requirements.txt )
+RUN python -m pip install --user --upgrade pip
 
-CMD ["poetry", "shell"]
+RUN curl https://raw.githubusercontent.com/akmalsoliev/requirements.txt/master/DeepLearning/deeplearning.txt --output requirements.txt
+
+RUN python -m pip install --user -r requirements.txt 
+
+CMD ["jupyter-notebook", "--allow-root"]
+
