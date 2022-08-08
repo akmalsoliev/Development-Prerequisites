@@ -10,6 +10,8 @@ RUN curl https://raw.githubusercontent.com/akmalsoliev/requirements.txt/master/D
 
 RUN python -m pip install --user -r ./setup/requirements.txt 
 
+# Install Vim:
+RUN apt install vim
 WORKDIR ./workdir/
 
 CMD ["jupyter-notebook", "--allow-root"]
