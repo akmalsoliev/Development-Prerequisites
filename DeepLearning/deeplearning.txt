@@ -1,5 +1,4 @@
 # requirements.txt for Deep Learning 
-# Note: Under update; I won't add versions, since using poetry package manager.
 
 # Essentials: 
 numpy
@@ -9,6 +8,7 @@ scipy
 # Data-Viz:
 matplotlib
 seaborn
+pip install plotly==5.9.0
 
 notebook
 
