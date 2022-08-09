@@ -15,5 +15,12 @@ RUN apt-get update && apt install vim -y
 
 WORKDIR ./workdir/
 
-CMD ["jupyter-notebook", "--allow-root"]
-
+CMD [ \
+	"jupyter", \
+	"notebook", \
+	"--allow-root", \
+	"--no-browser", \
+	# WARNING: this removes any authentication requirements:
+	"--NotebookApp.token=''", \
+	"--NotebookApp.password=''" \
+]
