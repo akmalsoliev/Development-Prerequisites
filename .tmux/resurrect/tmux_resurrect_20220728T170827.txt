@@ -1,0 +1,3 @@
+pane	0	0	1	:*	0	NUN1WQQYD3	:/home/akmalsoliev	1	vim	:vim .tmux.conf
+window	0	0	:vim	1	:*	b27d,188x50,0,0,0	:
+state	0	
