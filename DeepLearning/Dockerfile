@@ -15,15 +15,3 @@ RUN python -m pip install --no-cache-dir -r ./setup/requirements.txt
 RUN apt-get update && apt install vim -y 
 
 WORKDIR ./workdir/
-
-EXPOSE 8888
-
-CMD [ \
-	"jupyter", \
-	"notebook", \
-	"--allow-root", \
-	"--no-browser", \
-	# WARNING: this removes any authentication requirements:
-	"--NotebookApp.token=''", \
-	"--NotebookApp.password=''" \
-]
