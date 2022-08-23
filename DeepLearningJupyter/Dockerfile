@@ -6,7 +6,7 @@ RUN python -m pip install --user --upgrade pip
 
 RUN mkdir ./setup/ && mkdir ./workdir/
 
-RUN curl https://raw.githubusercontent.com/akmalsoliev/requirements.txt/master/DeepLearning/deeplearning.txt --output /setup/requirements.txt
+RUN curl https://raw.githubusercontent.com/akmalsoliev/Development-Prerequisites/master/DeepLearningJupyter/deeplearning.txt --output /setup/requirements.txt
 
 RUN python -m pip install --no-cache-dir -r ./setup/requirements.txt 
 
