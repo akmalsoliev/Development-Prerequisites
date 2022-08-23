@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  dl_env:
+    image: asoliev/deep-learning-jupyter:latest
+    container_name: dl_env
+    volumes: 
+      - .:/workdir
+    network_mode: host

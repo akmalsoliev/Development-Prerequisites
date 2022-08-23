@@ -1,0 +1,19 @@
+# requirements.txt for Deep Learning 
+
+# Essentials: 
+numpy
+pandas
+scipy
+
+# Data-Viz:
+matplotlib
+seaborn
+plotly==5.9.0
+
+notebook
+
+# ML & DL:
+scikit-learn
+imbalanced-learn
+tensorflow
+
