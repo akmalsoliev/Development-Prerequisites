@@ -2,16 +2,16 @@ FROM python:latest
 
 ENV PATH="/root/.local/bin:${PATH}"
 
-RUN python -m pip install --user --upgrade pip
+RUN python -m pip install --no-cache-dir --user --upgrade pip
 
-RUN mkdir ./setup/ && mkdir ./workdir/
-
-RUN curl https://raw.githubusercontent.com/akmalsoliev/requirements.txt/master/DeepLearning/deeplearning.txt --output /setup/requirements.txt
-
-RUN python -m pip install --no-cache-dir -r ./setup/requirements.txt 
+ENV req_source="https://raw.githubusercontent.com/akmalsoliev/requirements.txt/master/DeepLearning/deeplearning.txt"
+# installing requirements.txt that was assigned as $req_source
+RUN mkdir setup && \
+curl $req_source --output setup/requirements.txt && \
+python -m pip install --no-cache-dir -r setup/requirements.txt 
 
 # Install Vim:
 # This part is not required, however, vim will be used in case of debugging needs
 RUN apt-get update && apt install vim -y 
 
-WORKDIR ./workdir/
+WORKDIR workdir
