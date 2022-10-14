@@ -4,7 +4,7 @@ ENV PATH="/root/.local/bin:${PATH}"
 
 RUN python -m pip install --no-cache-dir --user --upgrade pip
 
-ENV req_source="https://raw.githubusercontent.com/akmalsoliev/requirements.txt/master/DeepLearning/deeplearning.txt"
+ENV req_source="https://raw.githubusercontent.com/akmalsoliev/Development-Prerequisites/master/deeplearning.txt"
 # installing requirements.txt that was assigned as $req_source
 RUN mkdir setup && \
 curl $req_source --output setup/requirements.txt && \

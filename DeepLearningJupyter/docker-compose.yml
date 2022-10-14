@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   dl_env:
-    image: asoliev/deep-learning-jupyter:latest
+    image: asoliev/deep-learning:jupyter
     container_name: dl_env
     volumes: 
       - .:/workdir
