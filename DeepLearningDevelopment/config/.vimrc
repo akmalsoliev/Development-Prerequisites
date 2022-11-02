@@ -17,6 +17,7 @@ set encoding=UTF-8
 " Enable Syntax
 syntax enable
 set autoindent expandtab tabstop=2 shiftwidth=2
+set backspace=indent,eol,start
 
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
