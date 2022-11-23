@@ -6,24 +6,23 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   endif
+
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
   \| endif
 
-" Set numbers:
-set number 
-set encoding=UTF-8
-" Enable Syntax
-syntax enable
-set autoindent expandtab tabstop=2 shiftwidth=2
-set backspace=indent,eol,start
-
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
+Plug 'arcticicestudio/nord-vim'
 Plug 'neoclide/coc.nvim'
+Plug 'airblade/vim-gitgutter'
 
+" List ends here. Plugins become visible to Vim after this call.
+call plug#end()
+
+" NERDTree Settings
 map <silent> <F1> :NERDTreeToggle<CR>
 
 " coc settings
@@ -39,6 +38,14 @@ if has('nvim')
 else
     inoremap <silent><expr> <c-@> coc#refresh()
 endif
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-" List ends here. Plugins become visible to Vim after this call.
-call plug#end()
+" Minor settings
+set number 
+set encoding=UTF-8
+syntax enable
+set autoindent expandtab tabstop=2 shiftwidth=2
+set backspace=indent,eol,start
+set mouse=a
+nnoremap <F10> :w<CR>:! python %<CR>
