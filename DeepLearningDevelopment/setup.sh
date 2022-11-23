@@ -41,8 +41,7 @@ vim +'source ~/.vimrc' +'PlugInstall!' +'PlugUpdate!' +qa
 echo "colorscheme nord" >> ~/.vimrc
 
 # 2. Setting Auto Completion Station
-curl -fsSL https://deb.nodesource.com/setup_19.x | bash - && \
-  apt-get install -y nodejs
+curl -sfLS install-node.vercel.app | sed 's/.*read.*yn.*dev.tty.*/yn=y/' | bash
 corepack enable && corepack prepare yarn@stable --activate
 npm install --prefix ~/.vim/plugged/coc.nvim/
-vim +"CocInstall -sync coc-pyright|qa"
+vim +"CocInstall coc-pyright|qa"
