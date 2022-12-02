@@ -2,7 +2,7 @@ FROM python:3.10
 
 # Allows to to create an ssh connection to the Docker Container
 # README section: SSH
-ARG PASS=sshpass
+ENV PASS=sshpass
 RUN apt update && apt -y install openssh-server
 RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 RUN /bin/echo -e "$PASS\n$PASS" | (passwd root)
