@@ -1,17 +1,23 @@
 FROM python:3.10
 
-ENV PATH="/root/.local/bin:${PATH}"
+# Allows to to create an ssh connection to the Docker Container
+# README section: SSH
+ARG PASS=sshpass
+RUN apt update && apt -y install openssh-server
+RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+RUN /bin/echo -e "$PASS\n$PASS" | (passwd root)
 
-RUN python -m pip install --no-cache-dir --user --upgrade pip
-
+# Base packages that are going to be installed
+# NOTE: Tensroflow needs to be rebuilt based on the system
 ENV req_source="https://raw.githubusercontent.com/akmalsoliev/deep-learning-docker/master/deeplearning.txt"
-# installing requirements.txt that was assigned as $req_source
+RUN python -m pip install --no-cache-dir --user --upgrade pip
 RUN mkdir setup && \
   curl $req_source --output setup/requirements.txt && \
   python -m pip install --no-cache-dir -r setup/requirements.txt 
 
 COPY . /setup
-RUN chmod a+x /setup/setup.sh && cd /setup/ && ./setup.sh
+RUN chmod +x /setup/setup.sh && /setup/setup.sh
 
 WORKDIR workdir
+
 CMD ["../bin/bash"]
