@@ -1,5 +1,5 @@
 # Run this with super user administration
-SOURCE_DIR=$(pwd)
+SOURCE_DIR=/setup
 USER_DIR=$HOME
 cd $USER_DIR
 
@@ -12,7 +12,7 @@ apt-get install libncurses5-dev libncursesw5-dev -y
 apt-get update 
 git clone https://github.com/vim/vim.git
 cd vim/src
-./configure
+./configure --enable-python3interp=yes
 make
 make install 
 cd $USER_DIR
@@ -45,3 +45,7 @@ curl -sfLS install-node.vercel.app | sed 's/.*read.*yn.*dev.tty.*/yn=y/' | bash
 corepack enable && corepack prepare yarn@stable --activate
 npm install --prefix ~/.vim/plugged/coc.nvim/
 vim +"CocInstall coc-pyright|qa"
+
+## 3. Setting Vimspector
+#cd ~/.vim/plugged/vimspector/
+#python3 -m install_gadget --enable-python

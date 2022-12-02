@@ -18,6 +18,9 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'arcticicestudio/nord-vim'
 Plug 'neoclide/coc.nvim'
 Plug 'airblade/vim-gitgutter'
+" Might utilize vimspector in future, however, at current moment do not have
+" time to learn it
+" Plug 'puremourning/vimspector'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
