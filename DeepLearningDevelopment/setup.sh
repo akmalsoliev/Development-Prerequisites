@@ -44,7 +44,16 @@ echo "colorscheme nord" >> ~/.vimrc
 curl -sfLS install-node.vercel.app | sed 's/.*read.*yn.*dev.tty.*/yn=y/' | bash
 corepack enable && corepack prepare yarn@stable --activate
 npm install --prefix ~/.vim/plugged/coc.nvim/
-vim +"CocInstall coc-pyright|qa"
+# Install extensions
+mkdir -p ~/.config/coc/extensions
+cd ~/.config/coc/extensions
+if [ ! -f package.json ]
+then
+echo '{"dependencies":{}}'> package.json
+fi
+# Change extension names to the extensions you need
+# NOTE: This fixes all the issues with vim based installation.
+npm install coc-pyright --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
 
 ## 3. Setting Vimspector
 #cd ~/.vim/plugged/vimspector/
